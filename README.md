@@ -78,8 +78,6 @@ pagehelper:
 
 注意 mapper 配置，因为参数名固定，所以接收参数使用的对象，按照 Spring Boot 配置规则，大写字母都变了带横线的小写字母。针对如 IDENTITY（对应i-d-e-n-t-i-t-y）提供了全小写的 identity 配置，如果 IDE 能自动提示，看自动提示即可。
 
-## SSM集成的基础项目 
->https://github.com/abel533/Mybatis-Spring
 
 ## MyBatis工具 http://www.mybatis.tk
 
