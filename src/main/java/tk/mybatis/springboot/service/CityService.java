@@ -32,10 +32,6 @@ import tk.mybatis.springboot.model.City;
 
 import java.util.List;
 
-/**
- * @author liuzh
- * @since 2015-12-19 11:09
- */
 @Service
 public class CityService {
 

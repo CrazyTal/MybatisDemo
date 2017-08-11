@@ -24,12 +24,6 @@
 
 package tk.mybatis.springboot.model;
 
-/**
- * 用户信息
- *
- * @author liuzh
- * @since 2016-01-31 21:39
- */
 public class UserInfo extends BaseEntity {
     private String username;
     private String password;

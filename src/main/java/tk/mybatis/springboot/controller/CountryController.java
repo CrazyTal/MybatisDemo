@@ -37,10 +37,6 @@ import tk.mybatis.springboot.service.CountryService;
 
 import java.util.List;
 
-/**
- * @author liuzh
- * @since 2015-12-19 11:10
- */
 @Controller
 @RequestMapping("/countries")
 public class CountryController {

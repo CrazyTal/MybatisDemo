@@ -3,10 +3,8 @@ package tk.mybatis.springboot.druid;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
- * 只提供了常用的属性，如果有需要，自己添加
+ * 只提供了常用的属性，如果有需要，还可添加
  *
- * @author liuzh
- * @since 2017/2/5.
  */
 @ConfigurationProperties(prefix = "druid")
 public class DruidProperties {

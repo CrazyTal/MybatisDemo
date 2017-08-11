@@ -32,10 +32,6 @@ import tk.mybatis.springboot.model.UserInfo;
 
 import java.util.List;
 
-/**
- * @author liuzh
- * @since 2016-01-31 21:42
- */
 @Service
 public class UserInfoService {
 
