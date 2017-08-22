@@ -105,11 +105,17 @@ public class GenerateDataUtil {
         }};
         inspectionDaily.setProvincesBusinesses(new ArrayList<>(provinces.size()));
         Iterator<String> iterator = provinces.iterator();
+        int totalBusinessVolume = 0;
         for (int i = 0; i < provinces.size(); i++) {
             if (iterator.hasNext()) {
-                inspectionDaily.getProvincesBusinesses().add(new ProvincesBusiness(iterator.next(), 500 + i * 2, (int) (Math.random() * 10 + 1)));
+                inspectionDaily.getProvincesBusinesses().add(new ProvincesBusiness(iterator.next(), 5000 + i * 2, 5 * i, (5000 + i * 2 - 5 * i) / (5000 + i * 2), 0));
+                totalBusinessVolume += 5000 + i * 2;
             }
         }
+        final int finalTotalBusinessVolume = totalBusinessVolume;
+        inspectionDaily.getProvincesBusinesses().forEach((a) -> {
+            a.setRatio(a.getTotalBusinessVolume() / finalTotalBusinessVolume);
+        });
         inspectionDaily.getProvincesBusinesses().sort((a1, a2) -> {
             return a2.getTotalBusinessVolume() - a1.getTotalBusinessVolume();
         });
@@ -124,11 +130,16 @@ public class GenerateDataUtil {
             return o2.getBusinessVolume_T() - o1.getBusinessVolume_T();
         }));
         //交易金额
-        inspectionDaily.setTransactionAmount(new ArrayList<>(50));
-        for (int i = 0; i < 50; i++) {
-            inspectionDaily.getTransactionAmount().add(new TransactionAmount("商品" + i, i + 10, 500, (i + 10) * 500));
+        int totalPrice = 0, totalSingleDayAmount = 0, totalTransactionAmount = 0;
+        inspectionDaily.setTransactionAmount(new ArrayList<>(51));
+        for (int i = 1; i < 51; i++) {
+            TransactionAmount transactionAmount = new TransactionAmount("商品" + i, i + 100, 500, (i + 10) * 500);
+            inspectionDaily.getTransactionAmount().add(transactionAmount);
+            totalPrice += transactionAmount.getPrice();
+            totalSingleDayAmount += transactionAmount.getSingleDayAmount();
+            totalTransactionAmount += transactionAmount.getTransactionAmount();
         }
-
+        inspectionDaily.getTransactionAmount().add(new TransactionAmount("合计", totalPrice, totalSingleDayAmount, totalTransactionAmount));
         return inspectionDaily;
     }
 }

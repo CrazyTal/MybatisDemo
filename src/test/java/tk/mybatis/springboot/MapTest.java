@@ -1,7 +1,10 @@
 package tk.mybatis.springboot;
 
 
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.junit.Test;
+import tk.mybatis.springboot.model.EachAPPSale;
 
 import java.util.*;
 
@@ -10,8 +13,75 @@ import java.util.*;
  */
 public class MapTest {
 
+    private String name;
+    private Map<String, Integer> map;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Map<String, Integer> getMap() {
+        return map;
+    }
+
+    public void setMap(Map<String, Integer> map) {
+        this.map = map;
+    }
+
+    @Test
+    public void test1() {
+        Map<String, Integer> map = new HashMap<String, Integer>();
+        map.put("B", 97);
+        map.put("D", 96);
+        map.put("C", 94);
+        map.put("A", 99);
+        MapTest mapTest = new MapTest();
+        mapTest.setName("aa");
+        mapTest.setMap(map);
+        System.out.println(JSONObject.fromObject(mapTest));
+        Map<String, MapTest> mapTestMap = new HashMap<>();
+        mapTestMap.put("第一个", mapTest);
+        mapTestMap.put("第三个", mapTest);
+        mapTestMap.put("第二个", mapTest);
+        System.out.println(JSONArray.fromObject(mapTestMap));
+        System.out.println(JSONObject.fromObject(mapTestMap));
+    }
+
+    @Test
+    public void test2() {
+        Map<Integer, Integer> treeMap = new TreeMap<>();
+        treeMap.put(24, 456);
+        treeMap.put(9, 767);
+        treeMap.put(18, 45);
+        for (Integer i : treeMap.keySet()) {
+            System.out.println(i);
+        }
+        System.out.println(treeMap);
+    }
+
+    @Test
+    public void test3() {
+        EachAPPSale eachAPPSale = new EachAPPSale();
+        LinkedHashMap linkedHashMap = new LinkedHashMap();
+        linkedHashMap.put("9元", 1);
+        linkedHashMap.put("24元", 2);
+        eachAPPSale.setProducts(linkedHashMap);
+        Map<String, EachAPPSale> eachAPPSaleMap = new TreeMap<>();
+        eachAPPSaleMap.put("腾讯", eachAPPSale);
+        eachAPPSaleMap.forEach((k1, v1) -> {
+            v1.getProducts().forEach((k2, v2) -> {
+                v1.setTotal(v1.getTotal() + v2);
+            });
+        });
+        System.out.println(JSONObject.fromObject(eachAPPSaleMap));
+    }
+
     public static void main(String[] args) {
-        HashMap<String, Double> map = new HashMap<String, Double>();
+        Map<String, Double> map = new HashMap<String, Double>();
         ValueComparator bvc = new ValueComparator(map);
         TreeMap<String, Double> sorted_map = new TreeMap<String, Double>(bvc);
 

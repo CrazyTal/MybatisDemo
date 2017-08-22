@@ -14,10 +14,12 @@ public class ProvincesBusiness {
     public ProvincesBusiness() {
     }
 
-    public ProvincesBusiness(String province, int totalBusinessVolume, int transactionFailure) {
+    public ProvincesBusiness(String province, int totalBusinessVolume, int transactionFailure, double transactionSuccessRate, double ratio) {
         this.province = province;
         this.totalBusinessVolume = totalBusinessVolume;
         this.transactionFailure = transactionFailure;
+        this.transactionSuccessRate = transactionSuccessRate;
+        this.ratio = ratio;
     }
 
     public String getProvince() {

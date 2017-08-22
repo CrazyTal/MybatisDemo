@@ -31,7 +31,7 @@ public interface InspectionConstants {
     String SHEET_D2 = "任我看-各APP销售情况";
 
 
-    int SAFE_LINE = 1000;
+    int SAFE_LINE = 2000;
 
     Map<String, String> PATHMAP = new HashMap<String, String>() {
         {

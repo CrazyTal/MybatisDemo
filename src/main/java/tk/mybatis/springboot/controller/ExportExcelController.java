@@ -10,6 +10,8 @@ import tk.mybatis.springboot.service.ExportExcelService;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by ltao on 2017/7/26.
@@ -22,23 +24,25 @@ public class ExportExcelController {
     private ExportExcelService service;
 
     /**
-     *
      * @param response
      * @param date
      * @param type
      */
-    @GetMapping(value = "/excel")
-    public void writeExcel(HttpServletResponse response, Date date, String type) {
-
+    @GetMapping(value = "/excel")// TODO: 2017/8/21 后期改为POST请求
+    public Map<String, Object> writeExcel(HttpServletResponse response, Date date, String type) {
+        Map<String, Object> resultMap = new HashMap<String, Object>();
         try {
             logger.info("Export Excel Start ...");
-            service.exportExcel(response, date, type);
+            type = "totalBusinessVolume";//todo 后期删除
+            service.exportExcel(response, date, type, resultMap);
             logger.info("Export Excel End !");
         } catch (Exception e) {
-            logger.error("Export Excel Failed !!!");
+            resultMap.put("result", "failed");
+            resultMap.put("message", "系统异常");
+            logger.error("Export Excel Failed !!!", e);
             e.printStackTrace();
         }
-
+        return resultMap;
     }
 
 

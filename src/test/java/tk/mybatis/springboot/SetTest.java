@@ -23,4 +23,16 @@ public class SetTest {
             System.out.println(iterator.next());
         }
     }
+
+    @Test
+    public void test2() {
+        System.out.println(System.getProperty("user.dir"));
+        System.out.println(this.getClass().getClassLoader().getResource("banner.txt"));
+    }
+
+    @Test
+    public void test3() {
+        int a = -32;
+        System.out.println((byte)a);
+    }
 }
