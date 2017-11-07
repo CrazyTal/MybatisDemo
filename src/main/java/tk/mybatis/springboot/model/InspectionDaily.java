@@ -3,10 +3,7 @@ package tk.mybatis.springboot.model;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by ltao on 2017/7/27.
- */
-public class InspectionDaily {//暂时用对象，也可用LinkedHashMap，和前端沟通后再处理
+public class InspectionDaily {
 
     private List<BusinessVolume> totalBusinessVolume;
     private List<DataRecharge> dataRecharge;

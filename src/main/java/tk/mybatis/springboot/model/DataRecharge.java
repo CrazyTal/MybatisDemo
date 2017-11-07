@@ -1,8 +1,5 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/31.
- */
 public class DataRecharge {
 
     private String date;
@@ -10,10 +7,20 @@ public class DataRecharge {
     private int transactionFailure;
     private double transactionSuccessRate;
 
+    public DataRecharge() {
+    }
+
     public DataRecharge(String date, int totalBusinessVolume, int transactionFailure) {
         this.date = date;
         this.totalBusinessVolume = totalBusinessVolume;
         this.transactionFailure = transactionFailure;
+    }
+
+    public DataRecharge(String date, int totalBusinessVolume, int transactionFailure, double transactionSuccessRate) {
+        this.date = date;
+        this.totalBusinessVolume = totalBusinessVolume;
+        this.transactionFailure = transactionFailure;
+        this.transactionSuccessRate = transactionSuccessRate;
     }
 
     public String getDate() {

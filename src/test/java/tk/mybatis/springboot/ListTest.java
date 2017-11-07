@@ -4,6 +4,8 @@ import org.junit.Test;
 import tk.mybatis.springboot.model.EachProductBusiness;
 import tk.mybatis.springboot.model.InspectionDaily;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +36,28 @@ public class ListTest {
         list.add(2);
         list.add(3);
 //        Collections.sort(list);
+    }
+
+    @Test
+    public void test1() throws Exception {
+//        List<String> list = ["item","a"];
+//        Set<String> set = {"item"};
+//        Map<String, Integer> map = {"key":1};
+        int a = 123_456;
+        Path path = Paths.get("D:\\renwogou.json");
+        System.out.println(path);
+        System.out.println(a);
+
+        List l = new ArrayList<String>();
+        l.add("a");
+        List<Integer> ls = l;
+        System.out.println(ls);
+
+//        String p = "";
+//        try (BufferedReader br = new BufferedReader(new FileReader(p))) {
+//            return br.readLine();
+//        }
+        System.out.println(System.nanoTime());
+        System.out.println(System.currentTimeMillis());
     }
 }

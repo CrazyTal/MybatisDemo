@@ -1,21 +1,18 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/31.
- */
 public class ProvincesDoD {
 
     private String province;
-    private int businessVolume_T_1;
-    private int businessVolume_T;
+    private int businessVolumeT_1;
+    private int businessVolumeT;
 
     public ProvincesDoD() {
     }
 
-    public ProvincesDoD(String province, int businessVolume_T_1, int businessVolume_T) {
+    public ProvincesDoD(String province, int businessVolumeT_1, int businessVolumeT) {
         this.province = province;
-        this.businessVolume_T_1 = businessVolume_T_1;
-        this.businessVolume_T = businessVolume_T;
+        this.businessVolumeT_1 = businessVolumeT_1;
+        this.businessVolumeT = businessVolumeT;
     }
 
     public String getProvince() {
@@ -26,19 +23,19 @@ public class ProvincesDoD {
         this.province = province;
     }
 
-    public int getBusinessVolume_T_1() {
-        return businessVolume_T_1;
+    public int getBusinessVolumeT_1() {
+        return businessVolumeT_1;
     }
 
-    public void setBusinessVolume_T_1(int businessVolume_T_1) {
-        this.businessVolume_T_1 = businessVolume_T_1;
+    public void setBusinessVolumeT_1(int businessVolumeT_1) {
+        this.businessVolumeT_1 = businessVolumeT_1;
     }
 
-    public int getBusinessVolume_T() {
-        return businessVolume_T;
+    public int getBusinessVolumeT() {
+        return businessVolumeT;
     }
 
-    public void setBusinessVolume_T(int businessVolume_T) {
-        this.businessVolume_T = businessVolume_T;
+    public void setBusinessVolumeT(int businessVolumeT) {
+        this.businessVolumeT = businessVolumeT;
     }
 }

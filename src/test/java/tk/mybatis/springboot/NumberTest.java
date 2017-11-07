@@ -29,11 +29,28 @@ public class NumberTest {
 
         }
         long time2 = System.currentTimeMillis();
-        map.forEach((k, v) -> {});
+        map.forEach((k, v) -> {
+        });
         long time3 = System.currentTimeMillis();
         System.out.println("第一种: " + (time2 - time1));
         System.out.println("第二种: " + (time3 - time2));
 
+    }
+
+    @Test
+    public void test1() {
+        double a;
+        a = (double) 1 / 0;
+        System.out.println(a);
+    }
+
+    @Test
+    public void test2(){
+        System.out.println(Math.floor(0.1));
+        System.out.println(Math.floor(-0.1));
+        System.out.println(Math.ceil(0.1));
+        System.out.println(Math.ceil(-0.1));
+        System.out.println(Math.abs(-0.22));
     }
 
 }

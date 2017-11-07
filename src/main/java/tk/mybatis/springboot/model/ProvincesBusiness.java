@@ -1,8 +1,5 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/31.
- */
 public class ProvincesBusiness {
 
     private String province;

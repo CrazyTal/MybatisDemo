@@ -1,8 +1,5 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/31.
- */
 public class EachProductBusiness {
 
     private String business;
@@ -15,6 +12,12 @@ public class EachProductBusiness {
     public EachProductBusiness(String business, int businessSuccess) {
         this.business = business;
         this.businessSuccess = businessSuccess;
+    }
+
+    public EachProductBusiness(String business, int businessSuccess, double ratio) {
+        this.business = business;
+        this.businessSuccess = businessSuccess;
+        this.ratio = ratio;
     }
 
     public String getBusiness() {

@@ -1,8 +1,5 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/26.
- */
 public class Position {
 
     private int row;

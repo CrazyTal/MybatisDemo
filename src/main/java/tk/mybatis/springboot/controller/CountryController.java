@@ -25,8 +25,11 @@
 package tk.mybatis.springboot.controller;
 
 import com.github.pagehelper.PageInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,23 +38,43 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import tk.mybatis.springboot.model.Country;
 import tk.mybatis.springboot.service.CountryService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
 @RequestMapping("/countries")
 public class CountryController {
+    private Logger logger = LoggerFactory.getLogger(CountryController.class);
 
     @Autowired
     private CountryService countryService;
 
-    @RequestMapping
-    public ModelAndView getAll(Country country) {
+    @GetMapping
+    public ModelAndView getAll(Country country, HttpServletRequest request, HttpSession session) {
         ModelAndView result = new ModelAndView("index");
         List<Country> countryList = countryService.getAll(country);
         result.addObject("pageInfo", new PageInfo<Country>(countryList));
         result.addObject("queryParam", country);
         result.addObject("page", country.getPage());
         result.addObject("rows", country.getRows());
+        HttpSession requestSession = request.getSession();
+        logger.info("session id : {}", session.getId());
+        logger.info("requestSession id : {}", requestSession.getId());
+        session.setAttribute("a", "a");
+//        requestSession.invalidate();
+        requestSession = request.getSession();
+        requestSession.setAttribute("test1", "test1");
+        requestSession.setAttribute("test2", "test2");
+//        session.setAttribute("test2", "test2");
+        HttpSession httpSession2 = request.getSession();
+        logger.info("httpSession2 test1 : {}", httpSession2.getAttribute("test1"));
+        logger.info("httpSession2 test2 : {}", httpSession2.getAttribute("test2"));
+
+        logger.info("<------------------->");
+        logger.info("requestSession id : {}", requestSession.getId());
+        logger.info("session id : {}", session.getId());
+
         return result;
     }
 

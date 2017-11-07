@@ -1,8 +1,5 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/31.
- */
 public class EachChannelBusiness {
 
     private String channel;
@@ -15,6 +12,12 @@ public class EachChannelBusiness {
     public EachChannelBusiness(String channel, int businessSuccess) {
         this.channel = channel;
         this.businessSuccess = businessSuccess;
+    }
+
+    public EachChannelBusiness(String channel, int businessSuccess, double ratio) {
+        this.channel = channel;
+        this.businessSuccess = businessSuccess;
+        this.ratio = ratio;
     }
 
     public String getChannel() {

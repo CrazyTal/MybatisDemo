@@ -1,8 +1,5 @@
 package tk.mybatis.springboot.model;
 
-/**
- * Created by ltao on 2017/7/26.
- */
 public class BusinessVolume {
     private String date;
     private int totalBusinessVolume;
@@ -10,6 +7,7 @@ public class BusinessVolume {
     private double transactionSuccessRate;//直接传给前端，后台不用
     private int systemFailure;
     private double systemSuccessRate;//直接传给前端，后台不用
+    private double ringRate;
 
     public BusinessVolume() {
     }
@@ -19,6 +17,16 @@ public class BusinessVolume {
         this.totalBusinessVolume = totalBusinessVolume;
         this.transactionFailure = transactionFailure;
         this.systemFailure = systemFailure;
+    }
+
+    public BusinessVolume(String date, int totalBusinessVolume, int transactionFailure, double transactionSuccessRate, int systemFailure, double systemSuccessRate, double ringRate) {
+        this.date = date;
+        this.totalBusinessVolume = totalBusinessVolume;
+        this.transactionFailure = transactionFailure;
+        this.transactionSuccessRate = transactionSuccessRate;
+        this.systemFailure = systemFailure;
+        this.systemSuccessRate = systemSuccessRate;
+        this.ringRate = ringRate;
     }
 
     public String getDate() {
@@ -67,5 +75,13 @@ public class BusinessVolume {
 
     public void setSystemSuccessRate(double systemSuccessRate) {
         this.systemSuccessRate = systemSuccessRate;
+    }
+
+    public double getRingRate() {
+        return ringRate;
+    }
+
+    public void setRingRate(double ringRate) {
+        this.ringRate = ringRate;
     }
 }
