@@ -50,8 +50,24 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
+    @Autowired
+    private HttpSession autowiredSession;
     @GetMapping
-    public ModelAndView getAll(Country country, HttpServletRequest request, HttpSession session) {
+    public ModelAndView testSession(HttpServletRequest request, HttpSession httpSession) {
+        HttpSession requestSession = request.getSession();
+        logger.info("httpSession id : {}", httpSession.getId());
+        logger.info("requestSession id : {}", requestSession.getId());
+        logger.info("autowiredSession id : {}", autowiredSession.getId());
+        requestSession.invalidate();
+        logger.info("requestSession id : {}", requestSession.getId());
+        requestSession = request.getSession();
+        logger.info("httpSession id : {}", httpSession.getId());
+        logger.info("requestSession id : {}", requestSession.getId());
+        logger.info("autowiredSession id : {}", autowiredSession.getId());
+        return null;
+    }
+
+    public ModelAndView getAll(Country country, HttpServletRequest request, HttpSession httpSession) {
         ModelAndView result = new ModelAndView("index");
         List<Country> countryList = countryService.getAll(country);
         result.addObject("pageInfo", new PageInfo<Country>(countryList));
@@ -59,21 +75,27 @@ public class CountryController {
         result.addObject("page", country.getPage());
         result.addObject("rows", country.getRows());
         HttpSession requestSession = request.getSession();
-        logger.info("session id : {}", session.getId());
+        logger.info("httpSession id : {}", httpSession.getId());
         logger.info("requestSession id : {}", requestSession.getId());
-        session.setAttribute("a", "a");
-//        requestSession.invalidate();
+        logger.info("autowiredSession id : {}", autowiredSession.getId());
+//        requestSession.setAttribute("test1", "test1");
+//        requestSession.setAttribute("test2", "test2");
+//        autowiredSession.setAttribute("test3", "test3");
+//        httpSession.setAttribute("a", "a");
+//        logger.info("httpSession test1 : {}", httpSession.getAttribute("test1"));
+//        logger.info("httpSession test2 : {}", httpSession.getAttribute("test2"));
+
+        requestSession.invalidate();
+//        httpSession.invalidate();
+        logger.info("requestSession id : {}", requestSession.getId());
         requestSession = request.getSession();
-        requestSession.setAttribute("test1", "test1");
-        requestSession.setAttribute("test2", "test2");
-//        session.setAttribute("test2", "test2");
-        HttpSession httpSession2 = request.getSession();
-        logger.info("httpSession2 test1 : {}", httpSession2.getAttribute("test1"));
-        logger.info("httpSession2 test2 : {}", httpSession2.getAttribute("test2"));
+//        httpSession.setAttribute("test2", "test2");
+//        HttpSession httpSession2 = request.getSession();
 
         logger.info("<------------------->");
+        logger.info("httpSession id : {}", httpSession.getId());
         logger.info("requestSession id : {}", requestSession.getId());
-        logger.info("session id : {}", session.getId());
+        logger.info("autowiredSession id : {}", autowiredSession.getId());
 
         return result;
     }
